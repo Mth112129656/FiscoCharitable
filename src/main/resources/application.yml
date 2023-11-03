@@ -1,0 +1,32 @@
+server:
+  port: 9090
+
+#设置数据源
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://139.159.233.23:3306/mybatisTest
+    password: root
+    username: root
+    hikari:
+      #设置事务自动提交
+      auto-commit: true
+      #设置最大连接数
+      maximum-pool-size: 10
+      minimum-idle: 10
+      #获取连接是，检测语句
+      connection-test-query: select 1
+      #连接超时设置
+      connection-timeout: 20000
+      #其它属性
+
+mybatis-plus:
+  configuration:
+    #开启驼峰命名自动映射
+    map-underscore-to-camel-case: true
+    #开启日志打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.mybatisplus.pojo
+  #扫描mapper文件
+  mapper-locations: classpath:mapper/*.xml
+
