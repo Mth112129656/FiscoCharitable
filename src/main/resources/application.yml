@@ -19,6 +19,11 @@ spring:
       #连接超时设置
       connection-timeout: 20000
       #其它属性
+  #热启动
+  devtools:
+    restart:
+      enabled: true
+      exclude: application.yml,static/**,public/**
 
 mybatis-plus:
   configuration:
@@ -29,4 +34,6 @@ mybatis-plus:
   type-aliases-package: com.mybatisplus.pojo
   #扫描mapper文件
   mapper-locations: classpath:mapper/*.xml
+
+
 

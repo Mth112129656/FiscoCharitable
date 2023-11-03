@@ -15,3 +15,4 @@ public interface UserMapper extends BaseMapper<User> {
     User queryUsername(String username);
 
 }
+
