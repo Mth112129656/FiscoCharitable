@@ -60,6 +60,12 @@
             <optional>true</optional>
         </dependency>
 
+        <!--   fisco部署     -->
+        <dependency>
+            <groupId>org.fisco-bcos.java-sdk</groupId>
+            <artifactId>fisco-bcos-java-sdk</artifactId>
+            <version>3.5.0</version>
+        </dependency>
 
     </dependencies>
 
