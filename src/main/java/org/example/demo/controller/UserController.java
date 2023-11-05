@@ -30,23 +30,33 @@ public class UserController {
     private FiscoBcos fiscoBcos;
 
     @RequestMapping("/testgetcontract")
-    TransactionResponse testGetContract() throws Exception {
-
-        //    测试合约hello
+    String testGetContract() throws Exception {
+        // 测试合约hello
 //    transaction hash: 0xf00909b9410b5241beaf0749a0cfaea0f299ee5a47b309929ced09843f02c436
 //    contract address: 0xff71babd817e225d1decf55312e033625cb06aef
 //    currentAccount: 0x3d3ee495c68e6c563170107dd075d5b352eafce4
 
-        fiscoBcos.init();
-        Client client = fiscoBcos.getBcosSDK().getClient(Integer.valueOf(1));
-        CryptoKeyPair keyPair = client.getCryptoSuite().createKeyPair();
         String helloWorldAddrss="0xff71babd817e225d1decf55312e033625cb06aef";
-        AssembleTransactionProcessor transactionProcessor = TransactionProcessorFactory.createAssembleTransactionProcessor(client, keyPair, "src/main/resources/abi/", "src/main/resources/bin/");
         List<Object> params = new ArrayList<>();
 //        params.add("chenbiao");
-        TransactionResponse transactionResponse = transactionProcessor.sendTransactionAndGetResponseByContractLoader("HelloWorld", helloWorldAddrss, "get", params);
+        TransactionResponse transactionResponse = fiscoBcos.getTransactionProcessor().sendTransactionAndGetResponseByContractLoader("HelloWorld", helloWorldAddrss, "get", params);
 
-        return transactionResponse;
+        return transactionResponse.getValues();
+    }
+
+    @RequestMapping("/testsetcontract")
+    String testSetContract() throws Exception {
+        // 测试合约hello
+//    transaction hash: 0xf00909b9410b5241beaf0749a0cfaea0f299ee5a47b309929ced09843f02c436
+//    contract address: 0xff71babd817e225d1decf55312e033625cb06aef
+//    currentAccount: 0x3d3ee495c68e6c563170107dd075d5b352eafce4
+
+        String helloWorldAddrss="0xff71babd817e225d1decf55312e033625cb06aef";
+        List<Object> params = new ArrayList<>();
+        params.add("比赛加油!!!");
+        TransactionResponse transactionResponse = fiscoBcos.getTransactionProcessor().sendTransactionAndGetResponseByContractLoader("HelloWorld", helloWorldAddrss, "set", params);
+
+        return "ok";
     }
 
     @RequestMapping("/userall")

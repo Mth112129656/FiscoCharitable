@@ -22,7 +22,7 @@ spring:
   #热启动
   devtools:
     restart:
-      enabled: false
+      enabled: true
       exclude: application.yml,static/**,public/**
 
 mybatis-plus:
