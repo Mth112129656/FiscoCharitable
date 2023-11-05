@@ -1,22 +1,14 @@
 package org.example.demo.controller;
 
-import com.webank.wedpr.Main;
 import org.example.demo.entity.User;
 import org.example.demo.mapper.UserMapper;
+import org.example.demo.service.UserService;
 import org.example.demo.util.FiscoBcos;
-import org.fisco.bcos.sdk.BcosSDK;
-import org.fisco.bcos.sdk.client.Client;
-import org.fisco.bcos.sdk.client.protocol.response.BlockNumber;
-import org.fisco.bcos.sdk.crypto.keypair.CryptoKeyPair;
-import org.fisco.bcos.sdk.transaction.manager.AssembleTransactionProcessor;
-import org.fisco.bcos.sdk.transaction.manager.TransactionProcessorFactory;
-import org.fisco.bcos.sdk.transaction.model.dto.CallResponse;
 import org.fisco.bcos.sdk.transaction.model.dto.TransactionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +17,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserMapper userMapper;
+    private UserService userService;
     @Autowired
     private FiscoBcos fiscoBcos;
 
@@ -61,19 +53,19 @@ public class UserController {
 
     @RequestMapping("/userall")
     List<User> userAll() {
-        List<User> user = userMapper.selectList(null);
+        List<User> user = userService.userAll();
         return user;
     }
 
     @RequestMapping("/userone")
     User userOne() {
-        User user = userMapper.queryUserId(1);
+        User user = userService.userOne(1);
         return user;
     }
 
     @RequestMapping("/username")
     User userName() {
-        User user = userMapper.queryUsername("张三");
+        User user = userService.userName("张三");
         return user;
     }
 }
