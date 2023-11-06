@@ -24,6 +24,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>3.1.5</version>
         </dependency>
 
         <dependency>
@@ -64,8 +65,11 @@
         <dependency>
             <groupId>org.fisco-bcos.java-sdk</groupId>
             <artifactId>fisco-bcos-java-sdk</artifactId>
-            <version>3.5.0</version>
+            <version>2.9.1</version>
         </dependency>
+
+        <!--swagger3-->
+
 
     </dependencies>
 

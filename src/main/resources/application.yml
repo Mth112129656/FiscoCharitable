@@ -1,5 +1,5 @@
 server:
-  port: 9090
+  port: 8081
 
 #设置数据源
 spring:
@@ -19,6 +19,7 @@ spring:
       #连接超时设置
       connection-timeout: 20000
       #其它属性
+
   #热启动
   devtools:
     restart:
@@ -34,6 +35,8 @@ mybatis-plus:
   type-aliases-package: com.mybatisplus.pojo
   #扫描mapper文件
   mapper-locations: classpath:mapper/*.xml
+
+
 
 
 

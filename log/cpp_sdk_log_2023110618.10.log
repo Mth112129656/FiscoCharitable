@@ -1,0 +1,36 @@
+info|2023-11-06 18:10:11.450227|[SDK][WS][SERVICE],[NEWOBJ][WsService]=0000024BDF0CDF20
+info|2023-11-06 18:10:11.450227|[RPCWS][SERVICE]init the local protocol,minVersion=1,maxVersion=1,module=2
+info|2023-11-06 18:10:11.450227|[startThread]start the timer thread
+info|2023-11-06 18:10:11.451224|[startThread]the timer thread start,threadName=timerFactory
+info|2023-11-06 18:10:11.453218|[DEFAULT][WS][INITIALIZER][initWsService]start websocket service as client,connected endpoints size=2
+info|2023-11-06 18:10:11.453218|[DEFAULT][WS][INITIALIZER][initWsService]initializer for websocket service,listenIP=,listenPort=0,disableSsl=false,server=false,client=true,threadPoolSize=12,maxMsgSize=33554432,msgTimeOut=-1,connected peers=2
+info|2023-11-06 18:10:11.453218|[buildJsonRpc]build json rpc,sendRequestToHighestBlockNode=true
+info|2023-11-06 18:10:11.453218|[bcos_sdk_create][NEWOBJ],sdk=0000024BDF0D5E50,version=FISCO BCOS C SDK Version : 3.4.0
+Build Time         : 20230926 11:50:00
+Build Type         : Windows/unknown/Release
+Git Branch         : HEAD
+Git Commit         : c9770330e9e12f8636e3b31e914cf1604fa62772
+,peers_count=2,disable_ssl=0,message_timeout_ms=-1,reconnect_period_ms=20000,heartbeat_period_ms=20000,send_rpc_request_to_highest_block_node=1
+info|2023-11-06 18:10:11.482110|[DEFAULT][WS][CONNECTOR][connectToWsServer]async_connect success,endpoint=139.159.233.23:20201
+info|2023-11-06 18:10:11.482110|[DEFAULT][WS][STREAM],[NEWOBJ][WsStream]=0000024BDD3CBD10
+info|2023-11-06 18:10:11.485769|[DEFAULT][WS][CONNECTOR][connectToWsServer]async_connect success,endpoint=139.159.233.23:20200
+info|2023-11-06 18:10:11.485769|[DEFAULT][WS][STREAM],[NEWOBJ][WsStream]=0000024BDD6D3470
+info|2023-11-06 18:10:11.502063|[DEFAULT][BOOSTSSL][NODEINFO][NEW]SSLContext pubHex: 3082010a0282010100ccabe10776a0c6eeb4f1bdad5dedb79e34c667c73f7824f72a98fcfe3fe3676652901da40bd7324a623045c8cf6cd5d42663333e4ea3352392b7acfa15d253c1e0e1f9a106da111c0d3ba6da3dccd73a3f0fe47f5d970706db8c085feaf67d93bf5d5e7b049bd9eb93ca527dfb027bfc596fd9cad483f084a2030de0975f4fb8f55e69e51a2cd8c320d7dcbe1bd36954b62240242814c72dece0cab113d7d30d76e055f4696e620a0a841d842599791cfe6d54127bab8b4ee28f65034c735c8b8ef092ea525f54f2ca3befbd436ca71e40c4a60a9b514c4f639007beb0fa54ef7a7cd01a34756ccdd12ecfee53679e43570a0e0fe66a936533c32d6a08f6ee010203010001
+info|2023-11-06 18:10:11.502063|[DEFAULT][BOOSTSSL][NODEINFO][NEW]SSLContext pubHex: 3082010a0282010100b5c9b8c582266395d1842666249e5bd4bbbe1f50c1885e939fb7854c2f354dc3c6b6f50889533fb633ba81b61b108a8d4c0322b059c396002c6a09d9eaa26e7d7ee42e45bebcc0e6d11fd1896aa8d10d336f0bda1522b64c3acc7d01cba757a55619af288a37d7dbcc3792e1129d75c5b422d7222ea1fa6e09eb394d4bdeda2fd32c68a5d3583ec90ab212b7674be9f9bd7f5f45f8d239ee0280f251daba996be064d3fa3ab9abdd8e309ae0eada49ec852d7b27cf6453bdf5c03db38dfa9a25ee115971a89a0744dc9885ee41053e6cda371995a6700aa3cb99bab2c9402428bde1bcd6c6d50c1d3faf23564ebe38bf9e2fc8d4d82a3a9986e2797acb1ffba70203010001
+warning|2023-11-06 18:10:11.502063|[DEFAULT][BOOSTSSL][NODEINFO]Get ca basic failed
+info|2023-11-06 18:10:11.511124|[DEFAULT][BOOSTSSL][NODEINFO][NEW]SSLContext pubHex: 3082010a0282010100ccabe10776a0c6eeb4f1bdad5dedb79e34c667c73f7824f72a98fcfe3fe3676652901da40bd7324a623045c8cf6cd5d42663333e4ea3352392b7acfa15d253c1e0e1f9a106da111c0d3ba6da3dccd73a3f0fe47f5d970706db8c085feaf67d93bf5d5e7b049bd9eb93ca527dfb027bfc596fd9cad483f084a2030de0975f4fb8f55e69e51a2cd8c320d7dcbe1bd36954b62240242814c72dece0cab113d7d30d76e055f4696e620a0a841d842599791cfe6d54127bab8b4ee28f65034c735c8b8ef092ea525f54f2ca3befbd436ca71e40c4a60a9b514c4f639007beb0fa54ef7a7cd01a34756ccdd12ecfee53679e43570a0e0fe66a936533c32d6a08f6ee010203010001
+info|2023-11-06 18:10:11.511124|[DEFAULT][BOOSTSSL][NODEINFO][NEW]SSLContext pubHex: 3082010a0282010100b08d91f1935e8ab200bc4b6890fecc213aa312e8da08d837941aba43e520c184cdd9c24fc22056f0fd48897e07085c028b9e2047fcf481531c65d34dba7c70d96cd213a595866b261538fcf3a449f567fd5dd7070c7ab405aa519bc869a631a113d4e939cac0923d8814b83a4091826dabff651154e72a3407957472782af6b2475fc9de82321bbd6d359b908eb6104cff5ab70f83e85ed67d4e5274309b091a9ca489cda507b3649dcaf9c3cb3afa1d48c8a87540b125ed8485468c53ec4fff67cea0128601cfefb3df5fe99a164eca265e809234ac60fab0b85a4979f58c1ae2607fcfc8bf5133b20053e0d229ef63ab56c540a9107c88871dcc8af36b1f7b0203010001
+warning|2023-11-06 18:10:11.511124|[DEFAULT][BOOSTSSL][NODEINFO]Get ca basic failed
+info|2023-11-06 18:10:11.531658|[DEFAULT][WS][CONNECTOR][connectToWsServer]ssl async_handshake success,host=139.159.233.23,port=20201
+info|2023-11-06 18:10:11.545623|[DEFAULT][WS][CONNECTOR][connectToWsServer]ssl async_handshake success,host=139.159.233.23,port=20200
+warning|2023-11-06 18:10:11.552230|[DEFAULT][WS][CONNECTOR][connectToWsServer]websocket async_handshake failed,error=end of stream,host=139.159.233.23,port=20201
+info|2023-11-06 18:10:11.552230|[DEFAULT][WS][STREAM],[DELOBJ][WsStream]=0000024BDD3CBD10
+info|2023-11-06 18:10:11.552230|[DEFAULT][WS][STREAM]the real action to close the stream,this=0000024BDD3CBD10
+warning|2023-11-06 18:10:11.570189|[DEFAULT][WS][CONNECTOR][connectToWsServer]websocket async_handshake failed,error=end of stream,host=139.159.233.23,port=20200
+info|2023-11-06 18:10:11.570189|[DEFAULT][WS][STREAM],[DELOBJ][WsStream]=0000024BDD6D3470
+info|2023-11-06 18:10:11.570189|[DEFAULT][WS][STREAM]the real action to close the stream,this=0000024BDD6D3470
+info|2023-11-06 18:10:11.570189|[SDK][WS][SERVICE][stop]stop websocket service successfully
+error|2023-11-06 18:10:11.571167|[bcos_sdk_start],sdk=0000024BDF0D5E50,errorMsg=C:\.hunter\_Base\5d8365a\5c97655\65d745c\Build\bcos-boostssl\Source\bcos-boostssl\websocket\WsService.cpp(233): Throw in function void __cdecl bcos::boostssl::ws::WsService::syncConnectToEndpoints(class std::shared_ptr<class std::set<struct bcos::boostssl::NodeIPEndpoint,struct std::less<struct bcos::boostssl::NodeIPEndpoint>,class std::allocator<struct bcos::boostssl::NodeIPEndpoint> > >)
+Dynamic exception type: struct boost::wrapexcept<class std::runtime_error>
+std::exception::what: [end of stream:/139.159.233.23:20200, end of stream:/139.159.233.23:20201]
+info|2023-11-06 18:10:11.571167|[bcos_sdk_start],sdk=0000024BDF0D5E50
