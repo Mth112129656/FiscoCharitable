@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
 
 #设置数据源
 spring:
@@ -36,7 +36,9 @@ mybatis-plus:
   #扫描mapper文件
   mapper-locations: classpath:mapper/*.xml
 
-
-
-
+knife4j:
+  # 开启增强配置
+  enable: true
+  # 开启生产环境屏蔽
+production: true
 
