@@ -1,11 +1,11 @@
 server:
-  port: 8089
+  port: 8080
 
 #设置数据源
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://139.159.233.23:3306/mybatisTest
+    url: jdbc:mysql://139.159.233.23:3306/FiscoCharitable
     password: root
     username: root
     hikari:
@@ -18,6 +18,16 @@ spring:
       connection-test-query: select 1
       #连接超时设置
       connection-timeout: 20000
+      #其它属性
+  # 邮箱验证
+  mail:
+    default-encoding: UTF-8
+    host: smtp.qq.com
+    username: 3094346914@qq.com
+    password: lfggfnbebrupddjb
+    properties:mail.smtp.auth: true
+    properties:mail.smtp.starttls.enable: true
+    properties:mail.smtp.starttls.required: true
   # Redis配置
   data:
     redis:
@@ -45,7 +55,7 @@ spring:
   #热启动
   devtools:
     restart:
-      enabled: false
+      enabled: true
       exclude: application.yml,static/**,public/**
 
 mybatis-plus:
@@ -54,7 +64,7 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     #开启日志打印
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  type-aliases-package: com.mybatisplus.pojo
+  type-aliases-package: org.example.demo.entity
   #扫描mapper文件
   mapper-locations: classpath:mapper/*.xml
 
