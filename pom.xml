@@ -74,6 +74,20 @@
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
             <version>4.1.0</version>
         </dependency>
+
+        <!-- Redis组件 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>3.1.5</version>
+        </dependency>
+        <!-- Spring集成Redis组件 -->
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-redis</artifactId>
+            <version>${spring-integration.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

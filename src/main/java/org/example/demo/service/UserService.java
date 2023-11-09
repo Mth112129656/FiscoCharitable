@@ -19,6 +19,7 @@ public class UserService {
     @Autowired
     private FiscoBcos fiscoBcos;
 
+
     public User userOne(Integer id) {
         User user = userMapper.queryUserId(id);
         return user;
@@ -61,4 +62,10 @@ public class UserService {
 
         return "success";
     }
+
+//    public User userOneredis(String id) {
+//        User user = new User();
+//        redisCache.setCacheObject(id,user);
+//        return user;
+//    }
 }

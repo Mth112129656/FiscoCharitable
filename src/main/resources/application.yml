@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8089
 
 #设置数据源
 spring:
@@ -18,12 +18,34 @@ spring:
       connection-test-query: select 1
       #连接超时设置
       connection-timeout: 20000
-      #其它属性
+  # Redis配置
+  data:
+    redis:
+      host: 139.159.233.23
+      port: 6379
+      database: 1
+      # 读超时
+      timeout: 3000
+      # 连接超时
+      connectTimeout: 5000
+      # Lettuce连接池
+      lettuce:
+        pool:
+          # 最小空闲连接
+          min-idle: 5
+          # 最大空闲连接
+          max-idle: 10
+          # 最大连接数
+          max-active: 100
+          # 连接分配应该阻塞的最大时间
+          max-wait: 2000
+
+
 
   #热启动
   devtools:
     restart:
-      enabled: true
+      enabled: false
       exclude: application.yml,static/**,public/**
 
 mybatis-plus:
@@ -41,4 +63,6 @@ knife4j:
   enable: true
   # 开启生产环境屏蔽
 production: true
+
+
 

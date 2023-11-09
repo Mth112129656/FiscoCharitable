@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.example.demo.entity.User;
+import org.example.demo.service.RedisDataService;
 import org.example.demo.service.UserService;
 
 
@@ -22,6 +23,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RedisDataService redisDataService;
 
 
     @Operation(summary = "区块链数据查询")
@@ -66,5 +70,24 @@ public class UserController {
     User userName(@PathVariable("name") String name) {
         User user = userService.userName(name);
         return user;
+    }
+
+    @Operation(summary = "添加信息(redis)")
+    @PostMapping("/userOneRedisPost/")
+    String userOneRedisPost() throws Exception {
+        redisDataService.postdataString();
+
+        return "ok";
+    }
+
+    @Operation(summary = "查询信息(redis)")
+    @Parameters({
+            @Parameter(name = "value",description = "value",in = ParameterIn.PATH),
+    })
+    @GetMapping("/userOneRedisGet/{value}")
+    Object userOneRedisGet(String value) throws Exception {
+        Object valuereids = redisDataService.getdataString(value);
+
+        return valuereids;
     }
 }
