@@ -1,7 +1,8 @@
 package org.example.demo.util;
 
 import org.example.demo.entity.ResResult;
-import org.example.demo.enums.RegisterCode;
+import org.example.demo.enums.EnumResponse;
+import org.example.demo.enums.RegisterEnum;
 
 import java.util.Random;
 import java.util.regex.Pattern;
@@ -44,8 +45,15 @@ public class Utils {
                 || url.contains("/webjars/");
     }
 
-    public static void setRegResponse(ResResult<String> res, RegisterCode registerCode) {
-        res.setCode(registerCode.getCode());
-        res.setMsg(registerCode.getMessage());
+    /**
+     * 通用设置接口回答
+     *
+     * @param res          接口返回
+     * @param responseEnum 返回的枚举信息
+     * @param <T> 各种枚举类
+     */
+    public static <T extends EnumResponse> void setResponseEnum(ResResult<String> res, T responseEnum) {
+        res.setCode(responseEnum.getCode());
+        res.setMsg(responseEnum.getMessage());
     }
 }
