@@ -121,7 +121,7 @@ public class UserService {
      * @param title   邮件标题
      * @param content 邮件内容
      */
-    public void sendMail(String to, String title, String content) {
+    public void sendMail(String to, String title, String content) throws Exception {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);
         message.setTo(to);
@@ -130,9 +130,4 @@ public class UserService {
         mailSender.send(message);
     }
 
-//    public User userOneredis(String id) {
-//        User user = new User();
-//        redisCache.setCacheObject(id,user);
-//        return user;
-//    }
 }

@@ -6,8 +6,11 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.example.demo.entity.ResResult;
 import org.example.demo.entity.User;
+import org.example.demo.enums.RegisterCode;
+import org.example.demo.service.RedisService;
 import org.example.demo.service.UserService;
 
 
@@ -18,10 +21,14 @@ import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "用户请求")
 @RestController
+@Slf4j
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RedisService redisService;
     private String code;
 
 
@@ -64,36 +71,48 @@ public class UserController {
     @PostMapping("/registerUser")
     ResResult registerUser(@RequestBody User user) {
         ResResult res = new ResResult<String>();
+        String email = user.getEmail();
+        int verifyResult = userService.verifyUser(email);
+        if (user == null) {
+            Utils.setRegResponse(res, RegisterCode.SYSTEM_ERROR);
+            return res;
+        }
 
-        int verifyResult = userService.verifyUser(user.getEmail());
-        if (user != null) switch (verifyResult) {
+        switch (verifyResult) {
             case -1:
-                res.setCode(-1);
-                res.setMsg("邮箱格式错误");
+                res.setCode(RegisterCode.EMAIL_FORMAT_ERROR.getCode());
+                res.setMsg(RegisterCode.EMAIL_FORMAT_ERROR.getMessage());
                 break;
             case -2:
-                res.setCode(-1);
-                res.setMsg("邮箱已注册");
+                res.setCode(RegisterCode.EMAIL_ALREADY_REGISTERED.getCode());
+                res.setMsg(RegisterCode.EMAIL_ALREADY_REGISTERED.getMessage());
                 break;
             default:
                 try {
-                    // todo 从Redis中获取验证码并验证
-//                    String cachedCode = redisService.getCode(user.getEmail()); // 从Redis中获取验证码
-                    String cachedCode = code;
-                    if (cachedCode.equals(user.getCaptcha())) {
-                        int regResult = userService.regUser(user);
-                        if (regResult == 1) {
-                            res.setCode(200);
-                            res.setData("注册成功!");
+                    boolean ttl = redisService.tokenTTL(email);//获取key的过期时间
+                    if (ttl) {//未过期
+                        String cachedCode = redisService.getRedis(email); // 从Redis中获取验证码
+                        if (cachedCode.equals(user.getCaptcha())) {//验证码正确
+                            int regResult = userService.regUser(user);
+                            if (regResult == 1) {
+                                res.setCode(RegisterCode.SUCCESS.getCode());
+                                res.setData(RegisterCode.SUCCESS.getMessage());
+                                //清除redis,保证一个验证码注册一次
+                                redisService.deleteRedis(email);
+                            }
+                        } else {//验证码错误
+                            res.setCode(RegisterCode.CAPTCHA_ERROR.getCode());
+                            res.setMsg(RegisterCode.CAPTCHA_ERROR.getMessage());
                         }
-                    } else {
-                        res.setCode(-1);
-                        res.setMsg("验证码错误");
+                    } else {//验证码过期
+                        res.setCode(RegisterCode.CAPTCHA_EXPIRED.getCode());
+                        res.setMsg(RegisterCode.CAPTCHA_EXPIRED.getMessage());
                     }
+
                 } catch (Exception e) {
-//                    log.error("注册用户时发生异常", e);
-                    res.setCode(-1);
-                    res.setMsg("系统繁忙，请稍后重试");
+                    log.error("注册用户时发生异常:{}", e.getMessage());
+                    res.setCode(RegisterCode.SYSTEM_ERROR.getCode());
+                    res.setMsg(RegisterCode.SYSTEM_ERROR.getMessage());
                 }
                 break;
         }
@@ -102,7 +121,7 @@ public class UserController {
 
 
     @Operation(summary = "获取验证码")
-    @GetMapping("/getCheckCode")
+    @GetMapping("/getLoginCheckCode")
     ResResult getLoginCheckCode(String email) {
         ResResult res = new ResResult<String>();
         if (email == null) {
@@ -113,19 +132,17 @@ public class UserController {
         String checkCode = Utils.generateCheckCode();
         String message = "您的注册验证码为：" + checkCode;
         try {
-            //todo 判断是否超过10分钟: 超过则重新发,反之不发
             userService.sendMail(email, "注册验证码", message);
-            //todo redis 以验证码存活10分钟
-            code = checkCode;
+            redisService.setRedis(email, checkCode, 10);//10分钟过期
             res.setCode(200);
             res.setData("获取验证码成功!");
         } catch (Exception e) {
             res.setCode(-1);
             res.setMsg("获取验证码失败!");
+
         }
         return res;
     }
-
 
 
 }
