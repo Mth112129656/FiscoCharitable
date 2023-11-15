@@ -22,9 +22,9 @@ public class Item {
     private String itemDes;
 
     private String fileUrl;
-//todo 文件上传
-//    @TableField(exist = false)
-//    private MultipartFile blFile;
+
+    @TableField(exist = false)
+    private MultipartFile blFile;
 
     private Integer userId;
 
