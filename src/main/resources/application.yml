@@ -3,6 +3,11 @@ server:
 
 #设置数据源
 spring:
+  # 文件上传大小
+  servlet:
+    multipart:
+      max-file-size: 10MB
+  # 数据源
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://139.159.233.23:3306/FiscoCharitable
@@ -52,7 +57,7 @@ spring:
 
 
 
-  #热启动
+  # 热启动
   devtools:
     restart:
       enabled: true
@@ -72,7 +77,7 @@ knife4j:
   # 开启增强配置
   enable: true
   # 开启生产环境屏蔽
-production: true
+  production: false
 
 
 

@@ -20,7 +20,7 @@ import org.example.demo.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@Tag(name = "用户请求")
+@Tag(name = "用户相关请求")
 @RestController
 @Slf4j
 public class UserController {

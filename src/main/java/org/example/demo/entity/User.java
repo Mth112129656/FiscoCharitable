@@ -27,12 +27,14 @@ public class User {
     @Schema(description = "1代表男性,0代表女性")
     private int gender;
 
+    @Schema(description = "1代表管理员,0代表非管理员")
+    private int admin;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
     @Schema(description = "邮箱验证码")
     @TableField(exist = false)
     private String captcha;
-
 
 }

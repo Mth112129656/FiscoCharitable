@@ -80,6 +80,18 @@ public class UserService {
         return count;
     }
 
+    /**
+     *根据唯一的email查询用户id
+     *
+     * @param email
+     * @return
+     */
+    public int getUserId(String email) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("email", email);
+        List<User> users = userMapper.selectList(queryWrapper);
+        return users.get(0).getUserId();
+    }
 
     /**
      * 验证邮箱格式以及重复性
@@ -111,6 +123,7 @@ public class UserService {
      */
     public int regUser(User user) {
         user.setUserId(null);
+        user.setAdmin(0);
         return userMapper.insert(user);
     }
 

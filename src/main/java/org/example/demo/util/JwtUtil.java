@@ -52,8 +52,7 @@ public class JwtUtil {
     public static boolean verifyToken(String token) {
         DecodedJWT jwt = null;
         try {
-            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET)).build();
-            jwt = verifier.verify(token);
+            jwt = parseJwt(token);
             //decodedJWT.getClaim("属性").asString()  获取负载中的属性值
         } catch (Exception e) {
             log.error(e.getMessage());
@@ -64,4 +63,15 @@ public class JwtUtil {
         return true;
     }
 
+    /**
+     * 解析token
+     *
+     * @param token
+     * @return
+     */
+    public static DecodedJWT parseJwt(String token) {
+        JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET)).build();
+        DecodedJWT jwt = verifier.verify(token);
+        return jwt;
+    }
 }
