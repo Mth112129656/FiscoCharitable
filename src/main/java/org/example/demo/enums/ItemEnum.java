@@ -1,12 +1,12 @@
 package org.example.demo.enums;
 
-public enum CommonEnum implements EnumResponse {
-    LOGIN_TOKEN_ERROR(-1, "登录状态无效!请重新登录"),
-    INPUT_EMPTY(-1, "输入信息为空!");
+public enum ItemEnum implements EnumResponse {
+    APPLY_ITEM_ERROR(-1, "申请资助项目失败!请检查信息!"),
+    APPLY_ITEM_SUCCESS(200, "申请资助项目成功!");
     private final int code;
     private final String message;
 
-    CommonEnum(int code, String message) {
+    ItemEnum(int code, String message) {
         this.code = code;
         this.message = message;
     }

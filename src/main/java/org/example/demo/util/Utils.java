@@ -41,6 +41,7 @@ public class Utils {
     public static boolean urlCheck(String url) {
         return url.matches("(?i).*login.*")
                 || url.matches("(?i).*register.*")
+                || url.matches("(?i).*favicon*")
                 || url.contains("doc")
                 || url.contains("/webjars/");
     }
@@ -50,7 +51,7 @@ public class Utils {
      *
      * @param res          接口返回
      * @param responseEnum 返回的枚举信息
-     * @param <T> 各种枚举类
+     * @param <T>          各种枚举类
      */
     public static <T extends EnumResponse> void setResponseEnum(ResResult<String> res, T responseEnum) {
         res.setCode(responseEnum.getCode());
