@@ -79,5 +79,9 @@ knife4j:
   # 开启生产环境屏蔽
   production: false
 
+file:
+  upload:
+    url: E://file
+
 
 

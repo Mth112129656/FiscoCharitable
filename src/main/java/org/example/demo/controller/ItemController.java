@@ -19,10 +19,16 @@ import org.example.demo.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 import static org.example.demo.util.JwtUtil.verifyToken;
 
@@ -54,12 +60,15 @@ public class ItemController {
                 //filer已经对token做了判断,不需要再次判断是否有效
                 DecodedJWT jwt = JwtUtil.parseJwt(token);
                 String email = jwt.getClaim("email").asString();
+                //上传压缩包文件
+                String FileUrl = itemService.uploadFile(item.getBlFile());
                 Integer userId = userService.getUserId(email);
                 //插入post(资助项目发布状态),并且发布资助项目
                 Integer postId = postService.insertPost();
                 //与发布者、发布状态关联
                 item.setPostId(postId);
                 item.setUserId(userId);
+                item.setFileUrl(FileUrl);
                 //已作异常处理,不需要返回结果
                 itemService.insertItem(item);
                 Utils.setResponseEnum(res, ItemEnum.APPLY_ITEM_SUCCESS);
@@ -73,3 +82,4 @@ public class ItemController {
         return res;
     }
 }
+

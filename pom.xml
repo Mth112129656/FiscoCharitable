@@ -26,12 +26,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>3.1.5</version>
         </dependency>
-        <!--swagger定义配置-->
-<!--        <dependency>-->
-<!--            <groupId>io.springfox</groupId>-->
-<!--            <artifactId>springfox-boot-starter</artifactId>-->
-<!--            <version>3.0.0</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+
         <!--邮件核心包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
